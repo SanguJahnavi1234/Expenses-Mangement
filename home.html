@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Expense Manager</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />
+</head>
+<body>
+  <h1>Monthly Expense Manager</h1><br /><br />
+  <div style="margin-left: 20rem; margin-bottom: 20px;">
+  <label for="monthSelect">Select Month: </label>
+  <select id="monthSelect">
+    <option value="1">January</option>
+    <option value="2">February</option>
+    <option value="3">March</option>
+    <option value="4">April</option>
+    <option value="5">May</option>
+    <option value="6">June</option>
+    <option value="7">July</option>
+    <option value="8">August</option>
+    <option value="9">September</option>
+    <option value="10">October</option>
+    <option value="11">November</option>
+    <option value="12">December</option>
+  </select>
+</div>
+<form id="expense-form">
+    <label for="Amount">Amount (₹)</label><br />
+    <input type="number" placeholder="Enter Amount" id="amount" required /><br /><br />
+    <label for="Category">Category</label><br />
+    <select id="category" required>
+      <option>Food</option>
+      <option>Transport</option>
+      <option>Home things</option>
+      <option>Entertainment</option>
+      <option>EMI</option>
+      <option>Rent</option>
+      <option>Other</option>
+    </select><br /><br />
+    <label for="Date">Date</label><br />
+    <input type="date" id="date" required /><br /><br />
+    <label for="description">Description</label><br />
+    <textarea id="description" rows="2" placeholder="Optional description..."></textarea><br /><br />
+    <button type="submit">Add Expenses</button>
+  </form>
+  <br /><br />
+
+  <h2 style="margin-left: 20rem;">Recent Expense</h2><br />
+  <table>
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Category</th>
+        <th>Amount (₹)</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody id="expense-list">
+    </tbody>
+  </table>
+
+  <div class="summary">
+    <h2>Monthly Summary</h2>
+    <ul id="summary-list">
+    </ul>
+  </div>
+
+  <div class="charts">
+    <div class="chart-box">
+      <canvas id="pieChart"></canvas>
+    </div>
+    <div class="chart-box">
+      <canvas id="lineChart"></canvas>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+</body>
+</html>
